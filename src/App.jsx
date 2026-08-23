@@ -26,7 +26,7 @@ function App() {
   const EDIT_PASSCODE = '2148';
   const emailMenuRef = useRef(null);
   const fileInputRef = useRef(null);
-  const [uploadTarget, setUploadTarget] = useState(null);
+  const uploadTargetRef = useRef(null); // Use ref (not state) so the file handler reads it synchronously
 
   const themes = [
     { name: 'Elegant Serif', classes: 'bg-stone-50 text-stone-900 font-serif', card: 'bg-white border border-stone-200 rounded-none shadow-sm', accent: 'text-stone-700', titleFont: 'font-bold tracking-tight', modalBg: 'bg-stone-50 text-stone-900 border border-stone-200' },
@@ -73,7 +73,13 @@ function App() {
   // Save changes to localStorage for local persistence
   useEffect(() => {
     if (!projectsLoaded) return;
-    localStorage.setItem('port_projects_v5', JSON.stringify(projects));
+    try {
+      localStorage.setItem('port_projects_v5', JSON.stringify(projects));
+    } catch (err) {
+      // Storage quota exceeded — base64 images are too large for localStorage.
+      // This is OK; the Publish to GitHub flow is the source of truth.
+      console.warn('localStorage quota exceeded; skipping local cache write.', err);
+    }
   }, [projects, projectsLoaded]);
 
   // Click outside listener for email select menus
@@ -105,22 +111,60 @@ function App() {
   };
 
   const triggerUpload = (idx) => {
-    setUploadTarget(idx);
+    uploadTargetRef.current = idx; // Set synchronously via ref — no async state delay
     fileInputRef.current.click();
   };
 
-  const handleImageUpload = (e) => {
+  /**
+   * Compress an image file via canvas and return a base64 data URL.
+   * Caps max dimension at 1400px and quality at 0.82 to stay under localStorage limits.
+   */
+  const compressImage = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = () => reject(new Error('Failed to read file'));
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onerror = () => reject(new Error('Failed to decode image'));
+        img.onload = () => {
+          const MAX_DIM = 1400;
+          let { width, height } = img;
+          if (width > MAX_DIM || height > MAX_DIM) {
+            if (width > height) { height = Math.round((height / width) * MAX_DIM); width = MAX_DIM; }
+            else { width = Math.round((width / height) * MAX_DIM); height = MAX_DIM; }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          resolve(canvas.toDataURL('image/jpeg', 0.82));
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
-    if (!file || uploadTarget === null) return;
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const p = [...projects];
-      if (!p[uploadTarget].imgs) p[uploadTarget].imgs = [];
-      p[uploadTarget].imgs.push(event.target.result); // Temporarily store as base64 for preview
-      setProjects(p);
-    };
-    reader.readAsDataURL(file);
-    e.target.value = ''; // Reset input
+    e.target.value = ''; // Reset input immediately so the same file can be re-selected
+    const targetIdx = uploadTargetRef.current;
+    if (!file || targetIdx === null) return;
+
+    try {
+      const compressed = await compressImage(file);
+      setProjects(prev => {
+        const p = prev.map((proj, i) => {
+          if (i !== targetIdx) return proj;
+          return { ...proj, imgs: [...(proj.imgs || []), compressed] };
+        });
+        return p;
+      });
+    } catch (err) {
+      console.error('Image upload failed:', err);
+      alert('Could not load that image. Please try a different file.');
+    }
   };
 
   const deleteImage = (projIdx, imgIdx) => {
