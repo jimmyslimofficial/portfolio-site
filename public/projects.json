@@ -2,25 +2,31 @@
   {
     "title": "Potential Energy Propulsion Racer",
     "desc": "-Co-designed and manufactured dual-propulsion vehicle (two-spring potential energy drivetrain and a 10F supercapacitor-driven propeller) under physical constraints (12\"x8\"x4\").\n\n-Iterated 4+ chassis geometries and custom mechanical components using SolidWorks; optimizing structure and material to achieve a light 20.62g ABS chassis.\n\n-Developed a functional 2.5:1 ratio gear train.\n\n-Conducted physical testing and performance verification over a 60-foot competitive track; cross-referenced hand-calculated kinematic models against experimental outcomes to secure a top-tier score.",
-    "imgs": [],
-    "tags": ["SolidWorks", "Mechanical Design", "Kinematics", "ABS Prototyping"]
+    "imgs": []
   },
   {
     "title": "Custom LEV Bike Integration",
     "desc": "-Identified and resolved factory manufacturing defects in the original frame, ensuring careful restoration of structural integrity.  \n\n-Overcame strict spatial limitations within the main frame triangle by designing a custom top-mounted battery enclosure system.  \n\n-Managed strict budgetary constraints by performing cross-compatible component sourcing, maintaining a lean design-to-production lifecycle (under $600 for 32mph top speed).  \n\n-Validated drivetrain reliability and thermal management through ~200 miles of real-world operations, achieving full capital cost recovery within the first month.  ",
-    "imgs": ["images/bike_1.jpg"],
-    "tags": ["LEV Integration", "Battery Design", "Drivetrain Tuning", "Thermal Management"]
+    "imgs": [
+      "images/img_custom_lev_bike_1_0_1787513425368_9622.jpg",
+      "images/img_custom_lev_bike_1_1_1787513426481_6678.jpg",
+      "images/img_custom_lev_bike_1_2_1787513427732_3567.jpg",
+      "images/img_custom_lev_bike_1_3_1787513428641_9458.jpg",
+      "images/img_custom_lev_bike_1_4_1787513429636_2283.jpg"
+    ]
   },
   {
     "title": "5-Inch FPV Drone",
     "desc": "-Executed micro-scale precision soldering to integrate a high-density electronics stack, including a 4-in-1 Electronic Speed Controller (ESC) and Flight Controller (FC) on a compact carbon-fiber chassis.  \n\n-Conducted rigorous electrical continuity testing and diagnostic troubleshooting to isolate signal noise, ensuring secure power distribution and data communication lines.  \n\n-Logged extensive manual and simulated flight hours to master specialized aerodynamic handling, utilizing real-time analog/digital telemetry feedback to monitor system performance.  ",
-    "imgs": ["images/drone_quad.jpg", "images/drone_goggles_box.jpg", "images/drone_goggles_box_2.jpg"],
-    "tags": ["Precision Soldering", "Aerodynamics", "Telemetry Feedback", "Hardware Testing"]
+    "imgs": [
+      "images/img_5_inch_fpv_dron_2_0_1787513430523_8912.jpg",
+      "images/img_5_inch_fpv_dron_2_1_1787513431334_3693.jpg",
+      "images/img_5_inch_fpv_dron_2_2_1787513432224_2538.jpg"
+    ]
   },
   {
     "title": "Personal Portfolio Web Application",
     "desc": "-Custom-built interactive portfolio site utilizing React, Tailwind CSS, and Framer Motion for responsive design and fluid animations.\n\n-Features a dynamic, theme-switchable UI with integrated content management capabilities for real-time project updates.\n\n-Includes a specialized \"Edit Mode\" allowing for administrative control and local data persistence via JSON export/import workflows.\n\n-Designed as a lightweight, static-deployable application to showcase engineering hardware projects and professional contact information efficiently.",
-    "imgs": [],
-    "tags": ["React 19", "Tailwind CSS v4", "Framer Motion", "GitHub Publishing"]
+    "imgs": []
   }
 ]
