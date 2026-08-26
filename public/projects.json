@@ -2,7 +2,11 @@
   {
     "title": "Potential Energy Propulsion Racer",
     "desc": "-Co-designed and manufactured dual-propulsion vehicle (two-spring potential energy drivetrain and a 10F supercapacitor-driven propeller) under physical constraints (12\"x8\"x4\").\n\n-Iterated 4+ chassis geometries and custom mechanical components using SolidWorks; optimizing structure and material to achieve a light 20.62g ABS chassis.\n\n-Developed a functional 2.5:1 ratio gear train.\n\n-Conducted physical testing and performance verification over a 60-foot competitive track; cross-referenced hand-calculated kinematic models against experimental outcomes to secure a top-tier score.",
-    "imgs": [],
+    "imgs": [
+      "images/img_potential_energ_0_0_1787773035028_8941.jpg",
+      "images/img_potential_energ_0_1_1787773036141_2020.jpg",
+      "images/img_potential_energ_0_2_1787773037625_8963.jpg"
+    ],
     "tags": [
       "Kart"
     ]
@@ -36,7 +40,10 @@
   {
     "title": "Personal Portfolio Web Application",
     "desc": "-Custom-built interactive portfolio site utilizing React, Tailwind CSS, and Framer Motion for responsive design and fluid animations.\n\n-Features a dynamic, theme-switchable UI with integrated content management capabilities for real-time project updates.\n\n-Includes a specialized \"Edit Mode\" allowing for administrative control and local data persistence via JSON export/import workflows.\n\n-Designed as a lightweight, static-deployable application to showcase engineering hardware projects and professional contact information efficiently.",
-    "imgs": [],
+    "imgs": [
+      "images/img_personal_portfo_3_0_1787773038714_6361.jpg",
+      "images/img_personal_portfo_3_1_1787773039731_8437.jpg"
+    ],
     "tags": [
       "Resume"
     ]
