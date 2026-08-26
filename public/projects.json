@@ -51,7 +51,11 @@
   {
     "title": "Virtual Work Station",
     "desc": "-Rigged dorm with cable harness and charging system for ease of access to virtual reality desktop studio alongside 'infinite' battery life\n\n-Software stack (ALVR, Desktop+) custom downloaded for quality of life\n\n-Styled for vibration dampening to reduce wear on desktop components",
-    "imgs": [],
+    "imgs": [
+      "images/img_virtual_work_st_4_0_1787773461065_4793.jpg",
+      "images/img_virtual_work_st_4_1_1787773462468_3025.jpg",
+      "images/img_virtual_work_st_4_2_1787773463547_7990.jpg"
+    ],
     "tags": [
       "jarvisHub"
     ]
