@@ -57,6 +57,49 @@ async function getFileSha(token, owner, repo, path) {
 }
 
 /**
+ * Uploads a base64 file (image, PDF, etc.) to the GitHub repository.
+ * @param {string} token GitHub PAT
+ * @param {string} owner Repo owner
+ * @param {string} repo Repo name
+ * @param {string} base64Data Full base64 DataURL (e.g. data:image/jpeg;base64,... or data:application/pdf;base64,...)
+ * @param {string} repoPath Target path in repository (e.g. 'public/resume.pdf' or 'public/images/img.jpg')
+ * @param {string} commitMessage Commit message for this update
+ * @returns {Promise<string>} Target path relative to public/
+ */
+export async function uploadFileToGithub(token, owner, repo, base64Data, repoPath, commitMessage) {
+  const commaIndex = base64Data.indexOf(',');
+  if (commaIndex === -1) {
+    throw new Error('Invalid base64 data URL format');
+  }
+  const rawBase64 = base64Data.slice(commaIndex + 1);
+
+  // Check if file already exists (get SHA to overwrite if it does)
+  const sha = await getFileSha(token, owner, repo, repoPath);
+
+  const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${repoPath}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `token ${token}`,
+      'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      message: commitMessage || `Upload asset: ${repoPath}`,
+      content: rawBase64,
+      ...(sha && { sha })
+    })
+  });
+
+  if (!response.ok) {
+    const errorDetails = await response.text();
+    throw new Error(`Failed to upload ${repoPath}: ${response.status} ${errorDetails}`);
+  }
+
+  // Return relative path without 'public/' prefix
+  return repoPath.startsWith('public/') ? repoPath.replace(/^public\//, '') : repoPath;
+}
+
+/**
  * Uploads a base64 image file to the GitHub repository.
  * @param {string} token GitHub PAT
  * @param {string} owner Repo owner
@@ -66,38 +109,21 @@ async function getFileSha(token, owner, repo, path) {
  * @returns {Promise<string>} Relative path to the uploaded image in the project
  */
 export async function uploadImageToGithub(token, owner, repo, base64Data, filename) {
-  // Strip the prefix (e.g., "data:image/jpeg;base64,") to get raw base64
-  const commaIndex = base64Data.indexOf(',');
-  if (commaIndex === -1) {
-    throw new Error('Invalid base64 image data URL format');
-  }
-  const rawBase64 = base64Data.slice(commaIndex + 1);
   const path = `public/images/${filename}`;
+  return uploadFileToGithub(token, owner, repo, base64Data, path, `Upload image asset: ${filename}`);
+}
 
-  // Check if file already exists (get SHA to overwrite if it does)
-  const sha = await getFileSha(token, owner, repo, path);
-
-  const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
-    method: 'PUT',
-    headers: {
-      'Authorization': `token ${token}`,
-      'Accept': 'application/vnd.github.v3+json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      message: `Upload image asset: ${filename}`,
-      content: rawBase64,
-      ...(sha && { sha }) // Include SHA only if file exists to overwrite it
-    })
-  });
-
-  if (!response.ok) {
-    const errorDetails = await response.text();
-    throw new Error(`Failed to upload image ${filename}: ${response.status} ${errorDetails}`);
-  }
-
-  // Return the relative path to be stored in projects.json (relative to public/ directory for local fetches)
-  return `images/${filename}`;
+/**
+ * Uploads a base64 PDF resume file to public/resume.pdf on GitHub.
+ * @param {string} token GitHub PAT
+ * @param {string} owner Repo owner
+ * @param {string} repo Repo name
+ * @param {string} base64Data Full base64 DataURL (data:application/pdf;base64,...)
+ * @returns {Promise<string>}
+ */
+export async function uploadResumePdfToGithub(token, owner, repo, base64Data) {
+  const path = 'public/resume.pdf';
+  return uploadFileToGithub(token, owner, repo, base64Data, path, 'Update official PDF resume document');
 }
 
 /**
