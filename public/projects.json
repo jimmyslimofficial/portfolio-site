@@ -1,7 +1,7 @@
 [
   {
     "title": "Custom LEV Bike Integration",
-    "desc": "-Identified and resolved factory manufacturing defects in the original frame, ensuring careful restoration of structural integrity.  \n\n-Overcame strict spatial limitations within the main frame triangle by designing a custom top-mounted battery enclosure system.  \n\n-Managed strict budgetary constraints by performing cross-compatible component sourcing, maintaining a lean design-to-production lifecycle (under $600 for 32mph top speed).  \n\n-Validated drivetrain reliability and thermal management through ~200 miles of real-world operations, achieving full capital cost recovery within the first month.  ",
+    "desc": "-Overcame spatial limitations within the main frame triangle by designing a custom top-mounted battery enclosure system.  \n\n-Security features include hidden tracking device within the main seating\n\n-Identified and resolved factory manufacturing defects in the original frame\n\n-Managed strict budgetary constraints, performing cross-compatible component sourcing and maintaining a lean design-to-production lifecycle (under $600 for 32mph top speed).  \n\n-Validated reliability and through over 200 miles of real-world operations, achieving full capital cost recovery within the first month (Doordash).",
     "imgs": [
       "images/img_custom_lev_bike_1_0_1787513425368_9622.jpg",
       "images/img_custom_lev_bike_1_1_1787513426481_6678.jpg",
@@ -15,7 +15,7 @@
   },
   {
     "title": "5-Inch FPV Drone",
-    "desc": "-Executed micro-scale precision soldering to integrate a high-density electronics stack, including a 4-in-1 Electronic Speed Controller (ESC) and Flight Controller (FC) on a compact carbon-fiber chassis.  \n\n-Conducted rigorous electrical continuity testing and diagnostic troubleshooting to isolate signal noise, ensuring secure power distribution and data communication lines.  \n\n-Logged extensive manual and simulated flight hours to master specialized aerodynamic handling, utilizing real-time analog/digital telemetry feedback to monitor system performance.  ",
+    "desc": "-Small-scale soldering used to integrate 4-in-1 Electronic Speed Controller (ESC) and Flight Controller (FC) on a compact carbon-fiber chassis.  \n\n-Conducted electrical continuity testing and diagnostic troubleshooting to isolate signal noise\n\n-Logged extensive manual and simulated flight hours to learn aerodynamic handling from scratch, utilizing real-time analog/digital telemetry feedback to monitor system performance.",
     "imgs": [
       "images/img_5_inch_fpv_dron_2_0_1787513430523_8912.jpg",
       "images/img_5_inch_fpv_dron_2_1_1787513431334_3693.jpg",
@@ -27,7 +27,7 @@
   },
   {
     "title": "Potential Energy Propulsion Racer",
-    "desc": "-Co-designed and manufactured dual-propulsion vehicle (two-spring potential energy drivetrain and a 10F supercapacitor-driven propeller) under physical constraints (12\"x8\"x4\").\n\n-Iterated 4+ chassis geometries and custom mechanical components using SolidWorks; optimizing structure and material to achieve a light 20.62g ABS chassis.\n\n-Developed a functional 2.5:1 ratio gear train.\n\n-Conducted physical testing and performance verification over a 60-foot competitive track; cross-referenced hand-calculated kinematic models against experimental outcomes to secure a top-tier score.",
+    "desc": "-Co-designed and manufactured dual-propulsion vehicle (two-spring potential energy drivetrain and a 10F supercapacitor-driven propeller) under physical space constraints (12\"x8\"x4\").\n\n-Iterated 4+ chassis geometries and custom mechanical components using SolidWorks to achieve a light 20.62g ABS chassis.\n\n-Developed a functional 2.5:1 ratio gear train.\n\n-Conducted physical testing and performance verification over a 60-foot competitive track; cross-referenced hand-calculated kinematic models against experimental outcomes to secure a top-tier score.",
     "imgs": [
       "images/img_potential_energ_0_0_1787773035028_8941.jpg",
       "images/img_potential_energ_0_1_1787773036141_2020.jpg",
@@ -39,7 +39,7 @@
   },
   {
     "title": "Virtual Work Station",
-    "desc": "-Rigged dorm with cable harness and charging system for ease of access to virtual reality desktop studio alongside 'infinite' battery life\n\n-Software stack (ALVR, Desktop+) custom downloaded for quality of life\n\n-Styled for vibration dampening to reduce wear on desktop components",
+    "desc": "-Created a Ready Player One-inspired VR headset harness and charging system for ease of access to virtual reality desktop studio, alongside 'infinite' battery life\n\n-Software stack (ALVR, Desktop+) custom downloaded for quality of life in multitasking environments\n\n-Cable setup utilizes vibration dampening geometry to reduce wear on desktop components",
     "imgs": [
       "images/img_virtual_work_st_4_0_1787773461065_4793.jpg",
       "images/img_virtual_work_st_4_1_1787773462468_3025.jpg",
@@ -51,7 +51,7 @@
   },
   {
     "title": "Personal Portfolio Web Application",
-    "desc": "-Custom-built interactive portfolio site utilizing React, Tailwind CSS, and Framer Motion for responsive design and fluid animations.\n\n-Features a dynamic, theme-switchable UI with integrated content management capabilities for real-time project updates.\n\n-Includes a specialized \"Edit Mode\" allowing for administrative control and local data persistence via JSON export/import workflows.\n\n-Designed as a lightweight, static-deployable application to showcase engineering hardware projects and professional contact information efficiently.",
+    "desc": "-Interactive portfolio site utilizing React, Tailwind CSS, and Framer Motion for responsive design and fluid animations.\n\n-Theme-switchable UI with integrated content management capabilities for real-time project updates.\n\n-\"Edit Mode\" allows for administrative control and local data persistence via JSON export/import workflows.\n\n-Showcases engineering hardware projects and professional contact information",
     "imgs": [
       "images/img_personal_portfo_3_0_1787773038714_6361.jpg",
       "images/img_personal_portfo_3_1_1787773039731_8437.jpg"
